@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Unit 1: Python Basics / Problem Set 3
@@ -41,8 +42,9 @@ def countalphabetical(s):
     """
      track the longest word with one variable
      track the current word with another variable
+     
      reset the current word when the ordinal value of the next 
-     character in the string is higher
+     character in the string is lower
 
     """    
     # reset the word on what condition?
