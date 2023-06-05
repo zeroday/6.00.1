@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 """
 Unit 1: Python Basics / Problem Set 3
@@ -14,12 +13,10 @@ For example, if s = 'azcbobobegghakl',
 then your program should print
 
 Longest substring in alphabetical order is: beggh
-
 In the case of ties, print the first substring. 
 For example, if s = 'abcbcd', then your program should print
 
 Longest substring in alphabetical order is: abc
-
 Note: This problem may be challenging. 
 We encourage you to work smart. 
 If you've spent more than a few hours on this problem, 
@@ -27,48 +24,51 @@ we suggest that you move on to a different part of the course.
 If you have time, come back to this problem after you've had a 
 break and cleared your head.
 """
-s = 'abcbcd'
-#s = 'azcbobobegghakl'
+
+s = 'azcbobobegghakl'
+#s = 'abcdefghijklmnopqrstuvwxyz'
+
+def biggest_list(word_list):
+    # list of keys sorted by size
+    # return the top of the list
+    biggest_word = ''
+    for i in range(0,len(word_list)):
+        if len(word_list[i]) > len(biggest_word):
+            biggest_word = word_list[i]
+
+    return biggest_word
 
 
-def countalphabetical(s): 
+def countalphabetical(s):
     current_word = []
-    string_array = []
-    longest_string = []
+    longest_alphabetical = []
+    word_list = []
+    string_as_list = list(s)
+    
+    for pos in range(0,(len(s))):
+        current_position = ord(string_as_list[pos])
+        if (pos == (len(s)-1)):
+            next_position = 0
+        else:
+            next_position = ord(string_as_list[pos+1])
+        current_word.append(string_as_list[pos])
+        if current_position > next_position:
+            word_list.append(current_word)
+            current_word=[]
+                
+    longest_alphabetical = biggest_list(word_list)
+        
 
-    for letter in list(s):
-        string_array.append(letter)
-
-    """
-     track the longest word with one variable
-     track the current word with another variable
-     
-     reset the current word when the ordinal value of the next 
-     character in the string is lower
-
-    """    
-    # reset the word on what condition?
-    # set longest_string = current_word under what condition?
-    for i in range(0,len(s)):
-        if (i > (len(s)-2)):
-            continue
-        if (ord(string_array[i]) <= ord(string_array[i+1])):
-            current_word.append(string_array[i])
-        if (ord(string_array[i]) == ord(string_array[i+1])):
-            current_word.append(string_array[i])
-
-        print(len(current_word),len(longest_string))
-        print(current_word)
-        print(longest_string)
-        if len(current_word) > len(longest_string):
-            longest_string = current_word
-            current_word = []
-
-    return longest_string
+    return longest_alphabetical
 
 
 #print the variable s
 longest_string = "none"
-longest_string = str(countalphabetical(s))
+longest_string = countalphabetical(s)
+printable_string = ''
 
-print("Longest substring in alphabetical order is: " + longest_string)
+for character in longest_string:
+    printable_string = printable_string + character
+
+    
+print("Longest substring in alphabetical order is: " + printable_string)
