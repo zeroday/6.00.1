@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Unit 1: Python Basics / Problem Set 3
-Problem 3
 
-Problem 3
 0.0/15.0 points (graded)
 Assume s is a string of lower case characters.
 
